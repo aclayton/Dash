@@ -16,14 +16,11 @@ export default class LoginController {
   submitted = false;
   Auth;
   $state;
-  getCurrentUser: Function;
 
   /*@ngInject*/
   constructor(Auth, $state) {
     this.Auth = Auth;
     this.$state = $state;
-
-    this.getCurrentUser = Auth.getCurrentUserSync;
   }
 
   login(form) {
@@ -36,7 +33,6 @@ export default class LoginController {
       })
       .then(() => {
         // Logged in, redirect to home
-        console.log(this.getCurrentUser());
         this.$state.go('main');
       })
       .catch(err => {

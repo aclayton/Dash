@@ -6,6 +6,7 @@ export class MainController {
   $http;
   Auth;
   getCurrentUser;
+  profile;
 
   awesomeThings = [];
   newThing = '';
@@ -13,15 +14,23 @@ export class MainController {
   /*@ngInject*/
   constructor($http, Auth) {
     this.$http = $http;
-    this.Auth = Auth;
-    this.getCurrentUser = Auth.getCurrentUserSync;
+    this.getCurrentUser = Auth.getCurrentUser;
+    this.profile = {};
   }
+
 
   $onInit() {
     this.$http.get('/api/things').then(response => {
       this.awesomeThings = JSON.parse(response.data).items;
-      console.log(this.awesomeThings);
     });
+
+    this.getCurrentUser()
+      .then((res) => { this.profile = res; })
+      .catch((err) => { console.log(err); });
+  }
+
+  getEvents() {
+    
   }
 
   addThing() {

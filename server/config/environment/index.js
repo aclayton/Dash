@@ -46,9 +46,9 @@ var all = {
   },
 
   google: {
-    clientID: process.env.GOOGLE_ID || 'id',
-    clientSecret: process.env.GOOGLE_SECRET || 'secret',
-    callbackURL: `${process.env.DOMAIN || ''}/auth/google/callback`
+    clientID: process.env.GOOGLE_ID || '339375936002-vs4uqqj41tt0mnem00i883ehqj8vlgnj.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || 'FZL065pNZSYmajX2gdJSzpQN',
+    callbackURL: `${process.env.DOMAIN || 'https://haulingdust.com'}/auth/google/callback`
   }
 };
 
