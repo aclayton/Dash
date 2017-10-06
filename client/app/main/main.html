@@ -1,0 +1,18 @@
+<!-- <header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Calendars:</h1>
+      <ul class="list-group">
+        <li ng-repeat="thing in $ctrl.awesomeThings" class="list-group-item col-md-4 col-lg-4 col-sm-6" style="background-color: {{ thing.backgroundColor }}"><a style="color: #fff;" href="#" uib-tooltip="{{thing.info}}">{{thing.summary}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
