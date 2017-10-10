@@ -7,6 +7,7 @@ export class MainController {
   Auth;
   getCurrentUser;
   profile;
+  currentCalendar;
 
   awesomeThings = [];
   newThing = '';
@@ -16,21 +17,29 @@ export class MainController {
     this.$http = $http;
     this.getCurrentUser = Auth.getCurrentUser;
     this.profile = {};
+    this.currentCalendar = {};
   }
 
 
   $onInit() {
     this.$http.get('/api/things').then(response => {
       this.awesomeThings = JSON.parse(response.data).items;
+      console.log(this.awesomeThings);
     });
 
     this.getCurrentUser()
-      .then((res) => { this.profile = res; })
+      .then((res) => { this.profile = res; console.log('Profile: ', this.profile); })
       .catch((err) => { console.log(err); });
   }
 
-  getEvents() {
-    
+  testLoad(calendar) {
+
+    this.$http.get(`/api/things/${calendar.id}`)
+      .then((res) => {
+        this.currentCalendar = JSON.parse(res.data);
+        console.log(this.currentCalendar);
+      })
+      .catch((err) => { console.log(err); });
   }
 
   addThing() {

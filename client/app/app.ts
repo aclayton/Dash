@@ -24,6 +24,8 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
+import CalendarComponent from './calendar/calendar.component';
+
 
 
 import './app.scss';
@@ -45,6 +47,7 @@ angular.module('dashApp', [
   footer,
   main,
   constants,
+  CalendarComponent,
 
   util
 ])

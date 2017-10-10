@@ -75,8 +75,8 @@ export function index(req, res) {
 
   var options = {
     uri: 'https://www.googleapis.com/calendar/v3/users/me/calendarList',
-    'auth': {
-      'bearer': req.user.accessToken
+    auth: {
+      bearer: req.user.accessToken
     }
   };
 
@@ -87,8 +87,16 @@ export function index(req, res) {
 
 // Gets a single Thing from the DB
 export function show(req, res) {
-  return Thing.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
+
+  var calendarId = req.params.id;
+  var options = {
+    uri: `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`,
+    auth: {
+      bearer: req.user.accessToken
+    }
+  };
+
+  return rp(options)
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
